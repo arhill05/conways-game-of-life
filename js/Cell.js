@@ -11,6 +11,8 @@ export default class Cell {
   isAlive = false;
   boundHtmlElement = null;
 
+  neighbors = [];
+
   set xPosition(value) {
     this._xPosition = value;
     this.updateHtmlElement();

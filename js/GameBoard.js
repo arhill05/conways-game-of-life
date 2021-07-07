@@ -2,7 +2,7 @@ import Cell from "./Cell.js";
 import RuleEvaluator from "./ConwayRulesEvaluator.js";
 
 export default class GameBoard {
-  _defaultTickRate = 250;
+  _defaultTickRate = 10000;
   _defaultXAxisSize = 50;
   _defaultYAxisSize = 50;
   _boundHtmlElement;
@@ -30,10 +30,8 @@ export default class GameBoard {
   createGameBoardElement = () => {
     this.updateCssVariablesForAxisSizes();
     const gameBoardContainer = this._boundHtmlElement;
-    for (let xAxis = 0; xAxis < this.xAxisSize; xAxis++)
-    {
-      for (let yAxis = 0; yAxis < this.yAxisSize; yAxis++)
-      {
+    for (let xAxis = 0; xAxis < this.xAxisSize; xAxis++) {
+      for (let yAxis = 0; yAxis < this.yAxisSize; yAxis++) {
         const cell = new Cell();
         cell.xPosition = xAxis;
         cell.yPosition = yAxis;
@@ -41,6 +39,8 @@ export default class GameBoard {
         this._cells.push(cell);
       }
     }
+
+    this._cells.forEach(cell => cell.neighbors = this.getNeighbors(cell));
   }
 
   updateCssVariablesForAxisSizes = () => {
@@ -71,10 +71,9 @@ export default class GameBoard {
 
   getNeighbors = (cell) => {
 
-    // const minimumXPosition = cell.xPosition - 1 < 0 ? 0 : cell.xPosition - 1;
-    // const maximumXPosition = cell.xPosition + 1 > this.xAxisSize - 1 ? this.xAxisSize - 1 : cell.xPosition + 1;
-    // const minimumYPosition = cell.yPosition - 1 < 0 ? 0 : cell.yPosition - 1;
-    // const maximumYPosition = cell.yPosition + 1 > this.yAxisSize - 1 ? this.yAxisSize - 1 : cell.yPosition + 1;
+    if (cell.neighbors && cell.neighbors.length) {
+      return cell.neighbors;
+    }
 
     const minimumXPosition = cell.xPosition - 1;
     const maximumXPosition = cell.xPosition + 1;
@@ -88,7 +87,9 @@ export default class GameBoard {
       c.yPosition <= maximumYPosition &&
       c !== cell);
 
-      return neighbors;
+    cell.neighbors = neighbors;
+
+    return neighbors;
   }
 
 }

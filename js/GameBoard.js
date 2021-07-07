@@ -2,7 +2,7 @@ import Cell from "./Cell.js";
 import RuleEvaluator from "./ConwayRulesEvaluator.js";
 
 export default class GameBoard {
-  _defaultTickRate = 10000;
+  _defaultTickRate = 250;
   _defaultXAxisSize = 50;
   _defaultYAxisSize = 50;
   _boundHtmlElement;

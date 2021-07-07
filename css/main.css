@@ -1,0 +1,27 @@
+:root {
+  --xAxisSize: 120;
+  --yAxisSize: 120;
+}
+
+.cell {
+  height: 16px;
+  width: 16px;
+  font-size: 12px;
+  border: 1px solid lightgrey;
+}
+
+.cell.alive {
+  background-color: red;
+}
+
+.cell.dead {
+  background-color: grey;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(var(--xAxisSize), auto);
+  grid-template-rows: repeat(var(--yAxisSize), auto);
+  width: fit-content;
+  max-width: 100%;
+}

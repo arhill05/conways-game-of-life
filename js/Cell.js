@@ -4,6 +4,7 @@ export default class Cell {
     this.boundHtmlElement.classList.add("cell");
     this.boundHtmlElement.classList.add("dead");
     this.boundHtmlElement.addEventListener("click", this.onCellClick);
+    this.boundHtmlElement.addEventListener("mouseover", this.onCellMouseover);
   }
 
   _xPosition = 0;
@@ -57,4 +58,16 @@ export default class Cell {
       this.revive();
     }
   };
+
+  onCellMouseover = (e) => {
+    if (this.isLeftClickHeld(e)) {
+      if (this.isAlive) {
+        this.kill();
+      } else {
+        this.revive();
+      }
+    }
+  };
+
+  isLeftClickHeld = (e) => e.buttons === 1;
 }

@@ -28,6 +28,7 @@ export default class GameBoard {
 
   createGameBoardElement = () => {
     this.updateCssVariablesForAxisSizes();
+    this.setHtmlControlValues();
     const gameBoardContainer = this._boundHtmlElement;
     for (let xAxis = 0; xAxis < this.xAxisSize; xAxis++) {
       for (let yAxis = 0; yAxis < this.yAxisSize; yAxis++) {
@@ -40,6 +41,12 @@ export default class GameBoard {
     }
 
     this._cells.forEach((cell) => (cell.neighbors = this.getNeighbors(cell)));
+  };
+
+  setHtmlControlValues = () => {
+    document.querySelector("#tick-rate-value").innerHTML =
+      this._defaultTickRate;
+    document.querySelector("#tick-rate-slider").value = this._defaultTickRate;
   };
 
   updateCssVariablesForAxisSizes = () => {

@@ -1,21 +1,82 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game of Life</title>
-  <link rel="stylesheet" href="css/main.css" />
-</head>
-<body>
-  <button id="start-button">Start</button>
-  <button id="stop-button">Stop</button>
-  <div class="tick-rate">
-    <input id="tick-rate-slider" type="range" min="125" max="2000" value="250">
-    <span id="tick-rate-value">Tick Rate in ms: 250</span>
-  </div>
-  <div id="game-board">
-
-  </div>
- <script type="module" src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game of Life</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="controls">
+      <div class="control-group">
+        <button id="start-button">Start</button>
+        <button id="stop-button">Stop</button>
+        <button id="clear-button">Clear</button>
+      </div>
+      <div class="control-group tick-rate slider-input-container">
+        <div class="slider-input">
+          <input
+            id="tick-rate-slider"
+            type="range"
+            min="125"
+            max="2000"
+            value="250"
+          />
+          <svg
+            class="tick-rate-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z"
+            />
+            <path
+              d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-8.49-8.49 5.66a2 2 0 0 0 0 2.83z"
+            />
+          </svg>
+        </div>
+        <span id="tick-rate">
+          Tick Rate: <span id="tick-rate-value">250</span>ms
+        </span>
+      </div>
+      <div class="control-group grid-size slider-input-container">
+        <div class="slider-input">
+          <input
+            type="range"
+            id="grid-size-slider"
+            min="10"
+            max="150"
+            value="50"
+          />
+          <svg
+            class="grid-size-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            enable-background="new 0 0 24 24"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+          >
+            <g><rect fill="none" height="24" width="24" /></g>
+            <g>
+              <g>
+                <g>
+                  <path
+                    d="M3,3v8h8V3H3z M9,9H5V5h4V9z M3,13v8h8v-8H3z M9,19H5v-4h4V19z M13,3v8h8V3H13z M19,9h-4V5h4V9z M13,13v8h8v-8H13z M19,19h-4v-4h4V19z"
+                  />
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <span id="grid-size">
+          Grid Size: <span id="grid-size-value">50</span>
+        </span>
+      </div>
+    </div>
+    <div id="game-board"></div>
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>

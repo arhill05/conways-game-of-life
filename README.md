@@ -1,6 +1,8 @@
 # Conway's Game of Life
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ab950d5c-75f5-4602-bce6-26fd2c5b6454/deploy-status)](https://app.netlify.com/sites/zealous-kepler-40090d/deploys)
+
+Link to site: https://zealous-kepler-40090d.netlify.app
 ## Rules
 1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.
 2. Any live cell with two or three live neighbours lives on to the next generation.
